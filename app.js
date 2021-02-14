@@ -83,7 +83,10 @@ const createSlider = () => {
   imagesArea.style.display = 'none';
   const duration = document.getElementById('duration').value || 1000;
   if(duration<0){
-    alert('duration can not be negative');
+    const message=document.getElementById('showMsg');
+    const h1=document.createElement('h1');
+    h1.innerText='Sorry!!! Slide change duration can not be negative.';
+    message.appendChild(h1);
   }
   else{
   sliders.forEach(slide => {
