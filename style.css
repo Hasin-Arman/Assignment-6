@@ -64,3 +64,6 @@ img {
     width: 90%;
   }
 }
+#imagePart img{
+  margin-left: 200px;
+}

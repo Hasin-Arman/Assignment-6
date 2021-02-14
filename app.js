@@ -20,9 +20,12 @@ const showImages = (images) => {
   // show gallery title
   galleryHeader.style.display = 'flex';
   images.forEach(image => {
+    console.log(image);
     let div = document.createElement('div');
     div.className = 'col-lg-3 col-md-4 col-xs-6 img-item mb-2';
-    div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
+    div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">
+    <button onClick="largeImage('${image.largeImageURL}')">Preview</button>
+    `;
     gallery.appendChild(div)
   })
 
@@ -149,6 +152,22 @@ document.getElementById('search').addEventListener('keypress',function(event){
     searchBtn.click();
   }
 })
+document.getElementById('duration').addEventListener('keypress',function(event){
+
+  if(event.key=='Enter'){
+    sliderBtn.click();
+  }
+})
 const toggleCart=(element)=>{
   element.classList.toggle('added');
  }
+const largeImage=(large)=>{
+
+  const fullImage=document.getElementById('imagePart');
+ fullImage.innerHTML='';
+  const div=document.createElement('div');
+  div.innerHTML=`
+  <img src="${large}"/>`;
+  fullImage.appendChild(div);
+
+}
